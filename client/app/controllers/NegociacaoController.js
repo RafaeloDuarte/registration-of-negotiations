@@ -11,7 +11,7 @@ class NegociacaoController {
         
         this._listaNegociacoes = new ListaNegociacoes()
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
-        this._negociacoesView._update(this._listaNegociacoes)
+        this._negociacoesView.update(this._listaNegociacoes)
 
         this._mensagemView = new MensagemView($('#mensagemView'))
         this._mensagem = new Mensagem()
@@ -22,9 +22,14 @@ class NegociacaoController {
         event.preventDefault()
         this._listaNegociacoes._adiciona(this._criacaoNegocio())
         this._mensagem.texto = 'Negociação adicionada com sucesso.'
-        this._mensagemView._update(this._mensagem)
-        this._negociacoesView._update(this._listaNegociacoes)
+        this._mensagemView.update(this._mensagem)
+        this._negociacoesView.update(this._listaNegociacoes)
         this._resetaForm()
+    }
+
+    limparLista(){
+        this._listaNegociacoes.esvazia()
+//  this._negociacoesView._update(this._listaNegociacoes)
     }
     
     _criacaoNegocio(){
